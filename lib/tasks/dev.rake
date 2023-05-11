@@ -7,8 +7,8 @@ namespace :dev do
       show_spinner("Apagando DB...") { %x(rails db:drop) }
       show_spinner("Criando tabelas...") { %x(rails db:create) } 
       show_spinner("Migrando...") { %x(rails db:migrate) }
-      %x(rails dev:add_coins)
       %x(rails dev:add_mining_types)
+      %x(rails dev:add_coins)
 
     else
       puts "Não estpa em ambiente de desenvolvimento"
@@ -20,18 +20,27 @@ namespace :dev do
   task add_coins: :environment do
     show_spinner("Cadastrando moedas... ") do
       coins = [
-          {description: 'bitcoin',
+        {
+          description: 'bitcoin',
           acronym: 'BTC',
-          url_image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/640px-Bitcoin.svg.png'},
-          
-          {description: 'Ethereum',
+          url_image: 'https://upload.wikimedia.org/wikipedia/commons/thumb/4/46/Bitcoin.svg/640px-Bitcoin.svg.png',
+          mining_type: MiningType.find_by(acronym: 'PoW')
+        },
+        
+        {
+          description: 'Ethereum',
           acronym: 'ETH',
-          url_image: 'https://1000logos.net/wp-content/uploads/2023/01/Ethereum-logo.png'},
-          
-          {description: 'Dash',
+          url_image: 'https://1000logos.net/wp-content/uploads/2023/01/Ethereum-logo.png',
+          mining_type: MiningType.all.sample
+        },
+        
+        {
+          description: 'Dash',
           acronym: 'DASH',
-          url_image: 'https://media.dash.org/wp-content/uploads/dash-d.png'}
-      ]
+          url_image: 'https://media.dash.org/wp-content/uploads/dash-d.png',
+          mining_type: MiningType.all.sample
+        }
+    ]
     coins.each do |coin|
         Coin.find_or_create_by!(coin)
     end  
