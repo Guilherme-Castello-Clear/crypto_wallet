@@ -1,5 +1,5 @@
 class WelcomeController < ApplicationController
-  def index
+  def index  
     @nome = params[:nome]
     @curso = "Rails"
   end
