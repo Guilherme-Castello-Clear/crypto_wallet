@@ -1,21 +1,20 @@
-<p>
-    <%= link_to "Português", root_path(locale: 'pt-BR') %>
-</p>
-<p>
-    <%= link_to 'English', "/?locale=en" %>
-</p>
+<div class="jumbotron">
+  <h1 class="display-4">Seja bem vindo!</h1>
+  <p class="lead">Este é o Cryto Wallet, um app para você cadastrar e acompanhar as suas moedas.</p>
+  <hr class="my-4">
+  <p>Para começar, selecione uma das opções abaixo:</p>
+  <p class="lead">
+    <%= render"menu" %>
+
+  </p>
+
+</div>
+
+
 
 <h1>Seja bem-vindo!</h1>
 <h2><strong><%= nome_aplicacao %></strong></h2>
 <h3><strong><%= cookies[:curso]%></strong></h3>
 <h3><strong><%= session[:curso]%></strong></h3>
 
-<p>O idioma utilizado nessa aplicação é <%= locale(I18n.locale) %></p>
-<p><strong>Data: </strong><%= l(Date.today) %></p>
-<p><%= t("hello") %> </p>
-<%= render"menu" %>
 
-<p>Você está em um ambiente de <strong><%= ambiente_rails %></strong></p>
-
-<p> <%= @nome %></p>
-<p> <%= @curso %></p>
