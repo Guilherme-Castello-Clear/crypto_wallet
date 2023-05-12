@@ -12,12 +12,16 @@
     
     <%= javascript_include_tag params[:controller], 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'jquery', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'notify', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
     <h1>Cabeçalho - <%= params[:controller] %></h1>
     <%= yield %>
     <h1>RODA PÉ</h1>
-
+    <script>
+      $.notify("Teste")
+    </script>
   </body>
 </html>

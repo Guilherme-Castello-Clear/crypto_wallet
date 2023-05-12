@@ -15,6 +15,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.precompile += %w(
     coins.css
     mining_types.css
+    jquery.js
+    notify.js
     welcome.css
     scaffolds.css
 )
